@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exclusive - E-Commerce</title>
+  <meta name="description" content="Exclusive E-Commerce: as melhores ofertas, produtos de tecnologia, games e promoções imperdíveis.">
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛍️</text></svg>">
+</head>
+<body>
+
+  <!-- ==========================================
+       1. TOP ANNOUNCEMENT BAR
+       ========================================== -->
+  <aside class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span class="top-bar-logo">EXCLUSIVE</span>
+      </div>
+      <div class="top-bar-lang" id="lang-toggle" title="Alterar idioma">
+        <span>Português</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       2. NAVIGATION / HEADER
+       ========================================== -->
+  <header class="header">
+    <div class="container">
+      <a href="javascript:void(0)" class="nav-brand" id="brand-logo" onclick="showTab('home')">Exclusive</a>
+      <button id="headerBackBtn" class="header-back-btn" onclick="showTab('home')" style="display: none;">
+        &larr; Voltar
+      </button>
+
+      <!-- Menu de Navegação na Aba Home -->
+      <nav id="headerNav">
+        <ul class="nav-links">
+          <li><a href="javascript:void(0)" class="active" id="navLinkHome" onclick="showTab('home')">Home</a></li>
+          <li><a href="#promocoes" onclick="showTab('home')">Contato</a></li>
+          <li><a href="#categorias" onclick="showTab('home')">Sobre</a></li>
+          <li><a href="javascript:void(0)" onclick="showTab('login')">Cadastre-se</a></li>
+        </ul>
+      </nav>
+
+      <!-- Título Central na Aba Login (conforme print) -->
+      <div id="headerLoginTitle" class="header-center-title" style="display: none;">
+        LOGIN
+      </div>
+
+      <!-- Título Central na Aba Pagamento / Carrinho (conforme print) -->
+      <div id="headerCartTitle" class="header-center-title" style="display: none;">
+        MEU CARRINHO
+      </div>
+
+      <div class="header-right">
+        <!-- Search Input -->
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Pesquisar um produto" autocomplete="off">
+          <svg id="searchBtn" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+
+        <!-- Header Action Icons -->
+        <div class="header-icons">
+          <!-- Wishlist Button -->
+          <button class="header-icon-btn" id="wishlistBtn" title="Lista de Desejos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="badge-count" id="wishlistCount">0</span>
+          </button>
+
+          <!-- Shopping Cart Button -->
+          <button class="header-icon-btn" id="cartBtn" title="Carrinho de Compras">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="badge-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       ABA HOME (Vitrine, Promoções, Categorias)
+       ========================================== -->
+  <div id="homeView" class="tab-view">
+    <main>
+    <!-- ==========================================
+         3. HERO BANNER
+         ========================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-banner">
+          <div class="hero-content">
+            <div class="hero-left">
+              <div class="hero-brand">
+                <!-- Apple SVG Logo -->
+                <svg viewBox="0 0 170 170">
+                  <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.6-7.83-11.7-14.36-6.09-9.67-10.87-20.67-14.34-33.01-3.48-12.33-5.22-23.75-5.22-34.25 0-14.67 3.7-26.65 11.09-35.95 7.4-9.3 16.53-14.07 27.4-14.32 5.09 0 10.74 1.34 16.94 4.02 6.2 2.68 10.15 4.07 11.87 4.16 1.31-.1 5.37-1.52 12.18-4.27 6.8-2.75 12.38-3.95 16.73-3.6 12.44.82 22.44 5.76 30 14.82-10.9 6.64-16.14 15.93-15.72 27.87.33 9.38 3.96 17.27 10.88 23.68 6.92 6.41 15.24 10.22 24.97 11.43-2.12 6.58-4.82 13.52-8.1 20.81zM119.22 31.02c0-7.39 2.67-14.39 8.01-21 5.34-6.61 11.95-10.02 19.83-10.02.22 1.1.33 2.12.33 3.06 0 7.39-2.82 14.61-8.46 21.66-5.64 7.05-12.21 10.82-19.71 11.3-.01-1.67-.01-3.34 0-5z"></path>
+                </svg>
+                <span>iPhone 14 Series</span>
+              </div>
+              <h1 class="hero-title">Up to 10%<br>off Voucher</h1>
+              <a href="#promocoes" class="hero-link">
+                <span>Shop Now</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+
+            <div class="hero-right">
+              <img src="assets/images/iphone-banner.jpg" alt="Apple iPhone 14 Pro" class="hero-img" id="heroImg">
+            </div>
+          </div>
+
+          <!-- Carousel Dots -->
+          <div class="hero-dots">
+            <span class="hero-dot" data-slide="0"></span>
+            <span class="hero-dot" data-slide="1"></span>
+            <span class="hero-dot active" data-slide="2"></span>
+            <span class="hero-dot" data-slide="3"></span>
+            <span class="hero-dot" data-slide="4"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. FLASH SALES / PROMOÇÕES
+         ========================================== -->
+    <section class="section" id="promocoes">
+      <div class="container">
+        <!-- Section Tag Indicator -->
+        <div class="section-tag">
+          <span class="tag-indicator"></span>
+          <span class="tag-label">Hoje</span>
+        </div>
+
+        <!-- Section Title & Countdown Row -->
+        <div class="section-header-row">
+          <div class="section-title-group">
+            <h2 class="section-title">Promoções</h2>
+
+            <!-- Countdown Timer matching screenshot -->
+            <div class="countdown-timer" id="countdown">
+              <div class="timer-item">
+                <span class="timer-label">Dias</span>
+                <span class="timer-number" id="timer-days">03</span>
+              </div>
+              <div class="timer-colon">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="timer-item">
+                <span class="timer-label">Horas</span>
+                <span class="timer-number" id="timer-hours">23</span>
+              </div>
+              <div class="timer-colon">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="timer-item">
+                <span class="timer-label">Minutos</span>
+                <span class="timer-number" id="timer-minutes">19</span>
+              </div>
+              <div class="timer-colon">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="timer-item">
+                <span class="timer-label">Segundos</span>
+                <span class="timer-number" id="timer-seconds">56</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Arrow Buttons -->
+          <div class="nav-arrows">
+            <button class="arrow-btn" id="promoPrev" title="Anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+            <button class="arrow-btn" id="promoNext" title="Próximo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Cards (The 4 products from the print) -->
+        <div class="products-grid" id="flashSalesGrid">
+
+          <!-- Product 1: Gamepad -->
+          <article class="product-card" data-id="promo-1">
+            <div class="product-img-wrapper">
+              <span class="product-badge">-40%</span>
+              <div class="product-actions">
+                <button class="action-btn wishlist-toggle-btn" title="Adicionar aos Favoritos" data-id="promo-1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+                <button class="action-btn quick-view-btn" title="Visualização Rápida" data-id="promo-1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+              <img src="assets/images/gamepad.jpg" alt="HAVIT HV-G92 Gamepad" class="product-img">
+              <button class="add-to-cart-btn" data-id="promo-1">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Add To Cart
+              </button>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">HAVIT HV-G92 Gamepad</h3>
+              <div class="product-price-row">
+                <span class="price-current">$120</span>
+                <span class="price-old">$160</span>
+              </div>
+              <div class="product-rating">
+                <div class="stars">
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <span class="review-count">(88)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2: Keyboard with visible Add To Cart -->
+          <article class="product-card" data-id="promo-2">
+            <div class="product-img-wrapper">
+              <span class="product-badge">-35%</span>
+              <div class="product-actions">
+                <button class="action-btn wishlist-toggle-btn" title="Adicionar aos Favoritos" data-id="promo-2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+                <button class="action-btn quick-view-btn" title="Visualização Rápida" data-id="promo-2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+              <img src="assets/images/keyboard.jpg" alt="AK-900 Wired Keyboard" class="product-img">
+              <button class="add-to-cart-btn always-visible" data-id="promo-2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Add To Cart
+              </button>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">AK-900 Wired Keyboard</h3>
+              <div class="product-price-row">
+                <span class="price-current">$960</span>
+                <span class="price-old">$1160</span>
+              </div>
+              <div class="product-rating">
+                <div class="stars">
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <span class="review-count">(75)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3: Monitor -->
+          <article class="product-card" data-id="promo-3">
+            <div class="product-img-wrapper">
+              <span class="product-badge">-30%</span>
+              <div class="product-actions">
+                <button class="action-btn wishlist-toggle-btn" title="Adicionar aos Favoritos" data-id="promo-3">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+                <button class="action-btn quick-view-btn" title="Visualização Rápida" data-id="promo-3">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+              <img src="assets/images/monitor.jpg" alt="IPS LCD Gaming Monitor" class="product-img">
+              <button class="add-to-cart-btn" data-id="promo-3">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Add To Cart
+              </button>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">IPS LCD Gaming Monitor</h3>
+              <div class="product-price-row">
+                <span class="price-current">$370</span>
+                <span class="price-old">$400</span>
+              </div>
+              <div class="product-rating">
+                <div class="stars">
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <span class="review-count">(99)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4: Graphics Card -->
+          <article class="product-card" data-id="promo-4">
+            <div class="product-img-wrapper">
+              <span class="product-badge">-25%</span>
+              <div class="product-actions">
+                <button class="action-btn wishlist-toggle-btn" title="Adicionar aos Favoritos" data-id="promo-4">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+                <button class="action-btn quick-view-btn" title="Visualização Rápida" data-id="promo-4">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+              <img src="assets/images/gpu.jpg" alt="Placa de Vídeo ASRock Radeon" class="product-img">
+              <button class="add-to-cart-btn" data-id="promo-4">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Add To Cart
+              </button>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Placa de Vídeo ASRock Radeon</h3>
+              <div class="product-price-row">
+                <span class="price-current">$375</span>
+                <span class="price-old">$400</span>
+              </div>
+              <div class="product-rating">
+                <div class="stars">
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <span class="review-count">(98)</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Centered Red Action Button matching print -->
+        <div class="section-center-action">
+          <button class="btn-primary" id="btnCatalogo">
+            Catálogo
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. BROWSE BY CATEGORY / MENU DE CATEGORIAS
+         ========================================== -->
+    <section class="section" id="categorias" style="border-top: 1px solid var(--color-border-light);">
+      <div class="container">
+        <!-- Section Tag Indicator -->
+        <div class="section-tag">
+          <span class="tag-indicator"></span>
+          <span class="tag-label">Categorias</span>
+        </div>
+
+        <!-- Section Title & Arrows Row -->
+        <div class="section-header-row">
+          <h2 class="section-title">Menu de categorias</h2>
+          <div class="nav-arrows">
+            <button class="arrow-btn" id="catPrev" title="Anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+            <button class="arrow-btn" id="catNext" title="Próximo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 6 Category Cards Grid -->
+        <div class="categories-grid" id="categoriesGrid">
+
+          <!-- 1. Celular -->
+          <div class="category-card" data-category="Celular">
+            <svg viewBox="0 0 24 24">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
+            <span class="category-name">Celular</span>
+          </div>
+
+          <!-- 2. Computador -->
+          <div class="category-card" data-category="Computador">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span class="category-name">Computador</span>
+          </div>
+
+          <!-- 3. SmartWatch -->
+          <div class="category-card" data-category="SmartWatch">
+            <svg viewBox="0 0 24 24">
+              <rect x="6" y="7" width="12" height="10" rx="2"></rect>
+              <path d="M9 1h6l-1 6H10L9 1z"></path>
+              <path d="M9 23h6l-1-6H10l-1 6z"></path>
+              <line x1="12" y1="10" x2="12" y2="12"></line>
+              <line x1="12" y1="12" x2="14" y2="12"></line>
+            </svg>
+            <span class="category-name">SmartWatch</span>
+          </div>
+
+          <!-- 4. Câmera (Active in the print!) -->
+          <div class="category-card active" data-category="Camera">
+            <svg viewBox="0 0 24 24">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+            <span class="category-name">Camera</span>
+          </div>
+
+          <!-- 5. HeadPhones -->
+          <div class="category-card" data-category="HeadPhones">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+            <span class="category-name">HeadPhones</span>
+          </div>
+
+          <!-- 6. Jogos -->
+          <div class="category-card" data-category="Jogos">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="6" width="20" height="12" rx="3"></rect>
+              <path d="M6 12h4m-2-2v4"></path>
+              <circle cx="15" cy="11" r="1"></circle>
+              <circle cx="18" cy="13" r="1"></circle>
+            </svg>
+            <span class="category-name">Jogos</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         EXTRA: CATÁLOGO DINÂMICO DA PLANILHA / BACKEND
+         ========================================== -->
+    <section class="section" id="catalogoSection" style="display: none; background-color: #fafafa; border-top: 1px solid var(--color-border-light);">
+      <div class="container">
+        <div class="section-tag">
+          <span class="tag-indicator"></span>
+          <span class="tag-label">Estoque Completo</span>
+        </div>
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Catálogo de Produtos</h2>
+            <p style="color: var(--color-text-muted); font-size: 14px; margin-top: 4px;" id="catalogoStatus">
+              Carregando dados da planilha do servidor...
+            </p>
+          </div>
+          <a href="http://localhost:5000/api/produtos/exportar" class="arrow-btn" style="width: auto; padding: 0 16px; border-radius: 4px; gap: 8px; text-decoration: none;" title="Baixar Planilha Excel">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span style="font-size: 13px; font-weight: 500;">Exportar Excel</span>
+          </a>
+        </div>
+        <div class="products-grid" id="backendProductsGrid">
+          <!-- Backend dynamic cards injected here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       6. FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Column 1: Exclusivo -->
+        <div class="footer-col">
+          <h3>Exclusivo</h3>
+          <h4>Inscreva-se</h4>
+          <p>Get 10% off your first order</p>
+          <form class="newsletter-box" id="newsletterForm" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Enter your email" required id="newsletterEmail">
+            <button type="submit" title="Enviar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Column 2: Suporte -->
+        <div class="footer-col">
+          <h4>Suporte</h4>
+          <p>111 Bijoy sarani, Dhaka,<br>DH 1515, Bangladesh.</p>
+          <p><a href="mailto:exclusive@gmail.com">exclusive@gmail.com</a></p>
+          <p><a href="tel:+88015888889999">+88015-88888-9999</a></p>
+        </div>
+
+        <!-- Column 3: Conta -->
+        <div class="footer-col">
+          <h4>Conta</h4>
+          <ul class="footer-links">
+            <li><a href="#">My Account</a></li>
+            <li><a href="javascript:void(0)" onclick="showTab('login')">Login / Register</a></li>
+            <li><a href="javascript:void(0)" onclick="toggleCart()">Cart</a></li>
+            <li><a href="#">Wishlist</a></li>
+            <li><a href="#promocoes">Shop</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Quick Link -->
+        <div class="footer-col">
+          <h4>Quick Link</h4>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms Of Use</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Download App -->
+        <div class="footer-col">
+          <h4>Download App</h4>
+          <p style="font-size: 12px; color: #aaa; margin-bottom: 8px;">Save $3 with App New User Only</p>
+          <div class="app-download-wrap">
+            <!-- QR Code -->
+            <div class="qr-box">
+              <svg viewBox="0 0 100 100" fill="currentColor">
+                <!-- QR Code Pattern -->
+                <path d="M0,0 h30 v30 h-30 z M6,6 v18 h18 v-18 z M10,10 h10 v10 h-10 z" />
+                <path d="M70,0 h30 v30 h-30 z M76,6 v18 h18 v-18 z M80,10 h10 v10 h-10 z" />
+                <path d="M0,70 h30 v30 h-30 z M6,76 v18 h18 v-18 z M10,80 h10 v10 h-10 z" />
+                <rect x="36" y="6" width="6" height="6" />
+                <rect x="48" y="6" width="16" height="6" />
+                <rect x="36" y="18" width="8" height="8" />
+                <rect x="52" y="18" width="6" height="6" />
+                <rect x="6" y="36" width="8" height="8" />
+                <rect x="20" y="36" width="8" height="6" />
+                <rect x="36" y="36" width="10" height="10" />
+                <rect x="54" y="36" width="8" height="8" />
+                <rect x="70" y="36" width="24" height="6" />
+                <rect x="6" y="52" width="6" height="12" />
+                <rect x="20" y="48" width="8" height="12" />
+                <rect x="36" y="52" width="12" height="6" />
+                <rect x="56" y="50" width="8" height="14" />
+                <rect x="70" y="48" width="12" height="8" />
+                <rect x="86" y="48" width="8" height="14" />
+                <rect x="36" y="70" width="8" height="8" />
+                <rect x="50" y="70" width="14" height="6" />
+                <rect x="70" y="70" width="8" height="8" />
+                <rect x="84" y="70" width="10" height="8" />
+                <rect x="36" y="84" width="20" height="10" />
+                <rect x="62" y="84" width="8" height="10" />
+                <rect x="76" y="84" width="18" height="10" />
+              </svg>
+            </div>
+
+            <!-- Store Badges -->
+            <div class="app-stores">
+              <a href="#" class="app-badge-btn" title="Download no Google Play">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3.61 2.37L13.1 11.86l-9.49 9.5c-.38-.28-.61-.73-.61-1.25V3.62c0-.52.23-.97.61-1.25zM14.52 13.27l2.58 2.58-11.88 6.86 9.3-9.44zm0-2.54l-9.3-9.44L17.1 8.15l-2.58 2.58zm1.41 1.27l3.83-2.21c.95-.55.95-1.45 0-2l-2.42-1.4-2.82 2.81 1.41 2.8z"></path>
+                </svg>
+                <div class="app-badge-text">
+                  <span>GET IT ON</span>
+                  <span>Google Play</span>
+                </div>
+              </a>
+
+              <a href="#" class="app-badge-btn" title="Download na App Store">
+                <svg viewBox="0 0 24 24">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.62-.75 1.04-1.8 0.93-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.07 1.71-.94 2.73 1.01.08 2.02-.48 2.64-1.23z"></path>
+                </svg>
+                <div class="app-badge-text">
+                  <span>Download on the</span>
+                  <span>App Store</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Social media icons row -->
+          <div class="footer-socials">
+            <a href="#" title="Facebook">
+              <svg viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" title="Twitter / X">
+              <svg viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" title="Instagram">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"></line>
+              </svg>
+            </a>
+            <a href="#" title="LinkedIn">
+              <svg viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom">
+        <p>&copy; Copyright Exclusive 2026. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  </div> <!-- /homeView -->
+
+  <!-- ==========================================
+       ABA DE LOGIN (Página/Aba completa conforme print)
+       ========================================== -->
+  <div id="loginView" class="tab-view" style="display: none;">
+    <section class="login-page-section">
+      <div class="login-card-wrapper">
+        <div class="login-card">
+          <div class="login-header">
+            <h2 class="login-title">EXCLUSIVE</h2>
+            <p class="login-subtitle" id="loginSubtitle">Entre na sua conta</p>
+          </div>
+
+          <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="login-form-group">
+              <input type="email" id="loginEmail" class="login-field" placeholder="E-mail" required autocomplete="email">
+            </div>
+
+            <div class="login-form-group">
+              <input type="password" id="loginPassword" class="login-field" placeholder="Senha" required autocomplete="current-password">
+            </div>
+
+            <div class="login-options-row">
+              <label class="login-remember">
+                <input type="checkbox" id="loginRemember">
+                <span>Lembrar-me</span>
+              </label>
+              <a href="javascript:void(0)" class="login-forgot" onclick="handleForgotPassword()">Esqueci a senha</a>
+            </div>
+
+            <button type="submit" class="login-submit-btn" id="loginSubmitBtn">
+              Entrar
+            </button>
+
+            <div class="login-divider">
+              <span>ou continue com</span>
+            </div>
+
+            <div class="login-social-row">
+              <button type="button" class="login-social-btn" onclick="handleSocialLogin('Google')">
+                Google
+              </button>
+              <button type="button" class="login-social-btn" onclick="handleSocialLogin('Facebook')">
+                Facebook
+              </button>
+            </div>
+
+            <div class="login-footer-text">
+              Não tem conta? <a href="javascript:void(0)" onclick="handleSignupClick()">Cadastre-se</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==========================================
+       ABA DE FORMAS DE PAGAMENTO (Conforme print)
+       ========================================== -->
+  <div id="checkoutView" class="tab-view" style="display: none;">
+    <section class="checkout-page-section">
+      <div class="checkout-container">
+        
+        <h2 class="payment-title">Forma de pagamento</h2>
+
+        <!-- Seleção de Formas de Pagamento: Cartão, Pix, Boleto -->
+        <div class="payment-methods-grid">
+          <button type="button" class="payment-method-btn active" id="btnMethodCard" onclick="selectPaymentMethod('card')">
+            Cartão
+          </button>
+          <button type="button" class="payment-method-btn" id="btnMethodPix" onclick="selectPaymentMethod('pix')">
+            Pix
+          </button>
+          <button type="button" class="payment-method-btn" id="btnMethodBoleto" onclick="selectPaymentMethod('boleto')">
+            Boleto
+          </button>
+        </div>
+
+        <form id="paymentForm" onsubmit="handleConfirmPayment(event)">
+          <!-- Opção 1: Formulário de Cartão de Crédito (Exibido no print) -->
+          <div id="cardFields" class="payment-fields-group">
+            <div class="payment-form-group">
+              <input type="text" id="cardNumber" class="payment-field" placeholder="Número do cartão" maxlength="19">
+            </div>
+
+            <div class="payment-form-row">
+              <div class="payment-form-group" style="flex: 1;">
+                <input type="text" id="cardExpiry" class="payment-field" placeholder="Validade" maxlength="5">
+              </div>
+              <div class="payment-form-group" style="flex: 1;">
+                <input type="text" id="cardCvv" class="payment-field" placeholder="CVV" maxlength="4">
+              </div>
+            </div>
+
+            <div class="payment-form-group">
+              <input type="text" id="cardHolder" class="payment-field" placeholder="Nome impresso no cartão">
+            </div>
+          </div>
+
+          <!-- Opção 2: Pix (Interativo) -->
+          <div id="pixFields" class="payment-fields-group" style="display: none;">
+            <div class="pix-container">
+              <div class="pix-qr-box">
+                <svg viewBox="0 0 100 100" width="130" height="130">
+                  <path d="M0,0 h30 v30 h-30 z M6,6 v18 h18 v-18 z M10,10 h10 v10 h-10 z" fill="#000" />
+                  <path d="M70,0 h30 v30 h-30 z M76,6 v18 h18 v-18 z M80,10 h10 v10 h-10 z" fill="#000" />
+                  <path d="M0,70 h30 v30 h-30 z M6,76 v18 h18 v-18 z M10,80 h10 v10 h-10 z" fill="#000" />
+                  <rect x="36" y="6" width="6" height="6" fill="#000" />
+                  <rect x="48" y="6" width="16" height="6" fill="#000" />
+                  <rect x="36" y="18" width="8" height="8" fill="#000" />
+                  <rect x="36" y="36" width="10" height="10" fill="#000" />
+                  <rect x="70" y="36" width="24" height="6" fill="#000" />
+                  <rect x="36" y="52" width="12" height="6" fill="#000" />
+                  <rect x="70" y="70" width="8" height="8" fill="#000" />
+                  <rect x="36" y="84" width="20" height="10" fill="#000" />
+                </svg>
+              </div>
+              <p style="font-size: 14px; font-weight: 500; margin: 10px 0 6px;">Escaneie o QR Code ou copie a chave Pix</p>
+              <div class="pix-key-row">
+                <input type="text" readonly value="00020126580014BR.GOV.BCB.PIX0136exclusive-loja-9948293758291" class="payment-field" style="font-size: 12px; color: #666;">
+                <button type="button" class="btn-copy-pix" onclick="copyPixKey()">Copiar Pix</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opção 3: Boleto (Interativo) -->
+          <div id="boletoFields" class="payment-fields-group" style="display: none;">
+            <div class="boleto-container">
+              <svg width="100%" height="45" viewBox="0 0 300 45">
+                <rect x="5" width="4" height="45" fill="#000"/>
+                <rect x="12" width="2" height="45" fill="#000"/>
+                <rect x="18" width="6" height="45" fill="#000"/>
+                <rect x="28" width="3" height="45" fill="#000"/>
+                <rect x="35" width="5" height="45" fill="#000"/>
+                <rect x="44" width="2" height="45" fill="#000"/>
+                <rect x="50" width="7" height="45" fill="#000"/>
+                <rect x="62" width="3" height="45" fill="#000"/>
+                <rect x="70" width="4" height="45" fill="#000"/>
+                <rect x="80" width="6" height="45" fill="#000"/>
+                <rect x="92" width="2" height="45" fill="#000"/>
+                <rect x="100" width="8" height="45" fill="#000"/>
+                <rect x="114" width="3" height="45" fill="#000"/>
+                <rect x="122" width="5" height="45" fill="#000"/>
+                <rect x="132" width="4" height="45" fill="#000"/>
+                <rect x="142" width="7" height="45" fill="#000"/>
+                <rect x="155" width="3" height="45" fill="#000"/>
+                <rect x="164" width="5" height="45" fill="#000"/>
+                <rect x="175" width="2" height="45" fill="#000"/>
+                <rect x="182" width="6" height="45" fill="#000"/>
+                <rect x="194" width="4" height="45" fill="#000"/>
+                <rect x="204" width="7" height="45" fill="#000"/>
+                <rect x="216" width="3" height="45" fill="#000"/>
+                <rect x="225" width="5" height="45" fill="#000"/>
+                <rect x="235" width="6" height="45" fill="#000"/>
+                <rect x="246" width="4" height="45" fill="#000"/>
+                <rect x="255" width="7" height="45" fill="#000"/>
+                <rect x="268" width="3" height="45" fill="#000"/>
+                <rect x="276" width="6" height="45" fill="#000"/>
+                <rect x="288" width="4" height="45" fill="#000"/>
+              </svg>
+              <p style="font-size: 13px; color: #666; margin-top: 10px;">Vencimento em 3 dias úteis após a emissão.</p>
+            </div>
+          </div>
+
+          <!-- Resumo de Valores (conforme print) -->
+          <div class="checkout-summary-block">
+            <div class="checkout-summary-row">
+              <span class="summary-label">Subtotal</span>
+              <span class="summary-val" id="checkoutSubtotal">R$ 000,00</span>
+            </div>
+            <div class="checkout-summary-row">
+              <span class="summary-label">Frete</span>
+              <span class="summary-val" id="checkoutFrete">R$ 00,00</span>
+            </div>
+
+            <div class="checkout-dashed-line"></div>
+
+            <div class="checkout-summary-row total-row">
+              <span class="summary-label">Total</span>
+              <span class="summary-val" id="checkoutTotal">R$ 000,00</span>
+            </div>
+          </div>
+
+          <!-- Termos de compra -->
+          <div class="checkout-terms-row">
+            <label class="terms-label">
+              <input type="checkbox" id="termsAgree" required>
+              <span>Concordo com os termos de compra</span>
+            </label>
+          </div>
+
+          <!-- Botão Confirmar Pagamento -->
+          <button type="submit" class="btn-confirm-payment" id="btnConfirmPayment">
+            Confirmar pagamento
+          </button>
+        </form>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ==========================================
+       CART DRAWER & OVERLAY
+       ========================================== -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Meu Carrinho (<span id="cartDrawerCount">0</span>)</h3>
+      <button class="close-btn" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-body" id="cartItemsContainer">
+      <div class="cart-empty">
+        <p>Seu carrinho está vazio.</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <button class="btn-checkout" id="checkoutBtn" onclick="checkout()">
+        Finalizar Compra
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       QUICK VIEW MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="quickViewModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeQuickView()">&times;</button>
+      <div class="modal-img-wrap">
+        <img src="" alt="" id="modalImg">
+      </div>
+      <div class="modal-info">
+        <span class="product-badge" id="modalBadge" style="position: static; display: inline-block; width: fit-content;">-40%</span>
+        <h3 id="modalTitle" style="font-size: 20px; font-weight: 600;">Produto</h3>
+        <div class="product-price-row">
+          <span class="price-current" id="modalPriceCurrent" style="font-size: 22px;">$0</span>
+          <span class="price-old" id="modalPriceOld">$0</span>
+        </div>
+        <p id="modalDesc" style="color: var(--color-text-muted); font-size: 14px; line-height: 1.5;">
+          Descrição detalhada do produto.
+        </p>
+        <button class="btn-primary" id="modalAddBtn" style="margin-top: 10px;">
+          Adicionar ao Carrinho
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       TOAST CONTAINER
+       ========================================== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Application Logic -->
+  <script src="index.js"></script>
+</body>
+</html>
