@@ -40,7 +40,6 @@ O projeto integra uma interface web desenvolvida pelo time de Front-end a uma AP
 - Beatriz Ferrari
 - Maria Eduarda Ferreira Irineu Sarrico
 - Gabriel Caique Zerbinato Alcantara
-
 - Eduarda Capelas Barbosa
 
 ---
