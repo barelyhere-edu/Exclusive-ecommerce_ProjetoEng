@@ -84,7 +84,7 @@ A sequência de navegação prevista é: **Homepage → Carrinho → Login → P
 
 O protótipo visual e o fluxo de navegação foram planejados no Figma:
 
-[Arquivo do projeto no Figma](https://www.figma.com/design/25N6K9iG9lJz4zrmdEteA6/Projetos?node-id=0-1&t=O9pLzouEl2h4Pcxc-1)
+[Arquivo do projeto no Figma](https://www.figma.com/design/25N6K9iG9lJz4zrmdEteA6/Projetos?node-id=78-2)
 
 O Figma deve ser utilizado como referência para layout, espaçamentos, componentes, tipografia, identidade visual e fluxo das telas.
 
