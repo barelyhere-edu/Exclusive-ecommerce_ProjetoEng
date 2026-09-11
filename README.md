@@ -5,7 +5,7 @@ Aplicação completa de e-commerce com design moderno (Exclusive), navegação i
 ## Estrutura do Projeto
 
 ```
-shopping_backend/
+/
 ├── app.py                  # Backend Flask (API REST + Servidor da Loja)
 ├── requirements.txt        # Dependências Python (Flask, flask-cors, openpyxl)
 ├── index.html              # Frontend E-Commerce (Home, Login e Formas de Pagamento)
