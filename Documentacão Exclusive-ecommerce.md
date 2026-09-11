@@ -32,6 +32,8 @@ O projeto integra uma interface web desenvolvida pelo time de Front-end a uma AP
 - João Lucas Palik Valerio
 - João Tenório Da Silva Bezerra
 - Théo Gisondi Baptista
+- Erick Soares Pereira
+- Matheus Felix Galdino da Silva
 
 ### Documentação e Scrum Master
 
