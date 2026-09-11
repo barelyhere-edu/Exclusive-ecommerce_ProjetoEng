@@ -35,7 +35,9 @@ O projeto integra uma interface web desenvolvida pelo time de Front-end a uma AP
 
 ### Documentação e Scrum Master
 
+- Beatriz Ferrari
 - Eduarda Capelas Barbosa
+- Maria Eduarda Ferreira Irineu Sarrico
 
 ---
 
