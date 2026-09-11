@@ -35,12 +35,15 @@ O projeto integra uma interface web desenvolvida pelo time de Front-end a uma AP
 - Erick Soares Pereira
 - Matheus Felix Galdino da Silva
 
-### Documentação e Scrum Master
+### Documentação 
 
 - Beatriz Ferrari
-- Eduarda Capelas Barbosa
 - Maria Eduarda Ferreira Irineu Sarrico
 - Gabriel Caique Zerbinato Alcantara
+
+### Scrum Master
+
+- Eduarda Capelas Barbosa
 
 ---
 
